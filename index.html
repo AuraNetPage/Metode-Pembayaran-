@@ -48,11 +48,22 @@ h1 .w2{color:var(--yel)}
 .hero p{position:relative;margin:0;font-size:1rem;font-weight:700;color:var(--t2)}
 
 /* pita berjalan */
-.ribbonwrap{position:relative;margin:8px -16px 18px;padding:14px 0}
-.ribbon{position:relative;left:50%;background:var(--yel);color:var(--ink);transform:translateX(-50%) rotate(-2.2deg);width:112vw;overflow:hidden;white-space:nowrap;padding:10px 0;border-block:3px solid var(--ink);font-weight:800;font-size:.86rem;letter-spacing:1.6px}
+.ribbonwrap{position:relative;width:100vw;margin:8px 0 18px calc(50% - 50vw);padding:14px 0;overflow:hidden}
+.ribbon{background:var(--yel);color:var(--ink);transform:rotate(-2.2deg);width:calc(100% + 80px);margin-left:-40px;overflow:hidden;white-space:nowrap;padding:10px 0;border-block:3px solid var(--ink);font-weight:800;font-size:.86rem;letter-spacing:1.6px}
 .track{display:flex;width:max-content;animation:marq 18s linear infinite;will-change:transform}
 @keyframes marq{to{transform:translateX(-50%)}}
-@media (min-width:700px){.ribbonwrap{padding:28px 0}.ribbon{transform:translateX(-50%) rotate(-1deg)}}
+.col2{display:contents}
+@media (min-width:700px){.ribbonwrap{padding:28px 0}.ribbon{transform:rotate(-1deg)}}
+/* tampilan desktop: 2 kolom (QRIS kiri, transfer manual kanan) */
+@media (min-width:860px){
+  .wrap{max-width:1040px;padding:34px 24px 20px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:44px;align-items:start}
+  .hero{grid-column:1/-1;max-width:520px}
+  .ribbonwrap,footer{grid-column:1/-1}
+  .col2{display:flex;flex-direction:column}
+  #qris{margin-bottom:0}
+  .cf{margin-top:18px}
+  footer{margin-top:8px}
+}
 
 /* kartu */
 .card{position:relative;color:#fff;border:3px solid var(--ink);border-radius:24px;box-shadow:6px 6px 0 var(--ink);scroll-margin-top:16px;
@@ -168,6 +179,7 @@ footer span{display:inline-block;animation:tw 2s ease-in-out infinite}
     <p class="msg" id="dlMsg"></p>
   </section>
 
+  <div class="col2">
   <div class="lbl rv">Atau transfer manual</div>
   <section class="card rv l" id="m1"></section>
   <section class="card rv r" id="m2"></section>
@@ -182,6 +194,7 @@ footer span{display:inline-block;animation:tw 2s ease-in-out infinite}
       Kirim Bukti via WhatsApp
     </a>
   </section>
+  </div>
   <footer class="rv">Terima kasih telah menjadi pelanggan Aura.Net <span>✨</span></footer>
 </div>
 
